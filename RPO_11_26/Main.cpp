@@ -26,9 +26,7 @@ int main()
 		std::cout << "\n";
 	}
 
-	std::cout << "123";
-
-
+	
 
 	return 0;
 }
