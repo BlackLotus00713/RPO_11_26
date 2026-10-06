@@ -1,6 +1,65 @@
 #include <iostream>
 #include <Windows.h>
 
+void PrintInfo();
+void PrintText();
+
+/*
+
+
+int Sum(std::string two, std::string name)
+{
+	return 4;
+}
+
+double Sum(int one, double two)
+{
+	return one + two;
+}
+
+float Sum(float one)
+{
+	return one + 41;
+}*/
+
+
+void SetArray(int arr[], int size);
+void SetArray(double arr[], int size);
+void SetArray(char arr[], int size);
+void PrintArray(int arr[], int size);
+void PrintArray(double arr[], int size);
+void PrintArray(char arr[], int size);
+
+
+template <typename T1, typename T2>
+double Sum(T1 one, T2 two)
+{
+	return one + two;
+}
+
+unsigned long long Fak(unsigned long long num)
+{
+	if (num < 0)
+	{
+		return 0;
+	}
+	if (num == 0)
+	{
+		return 1;
+	}
+	return num * Fak(num - 1);
+}
+
+
+int RecMult(int one, int two)
+{
+	if (two == 0)
+	{
+		return 0;
+	}
+
+	return one + RecMult(one, two - 1);
+}
 
 int main()
 {
@@ -8,29 +67,81 @@ int main()
 	SetConsoleOutputCP(CP_UTF8); //  1251
 	srand(time(NULL));
 
-	// тип_данных имя_массива [кол_ячеек];
+	const int size = 5;
+	int arrI[size]{};
+	double arrD[size]{};
+	char arrC[size]{};
 
-	// rand() % 10 + 1;
+	std::cout << RecMult(5,20) << "\n";
 
-	const int row = 3, col = 4;
 
-	int arr[row][col];  // заполнить этот массив рандомными числами через циклы
+	/*SetArray(arrI, size);
+	SetArray(arrD, size);
+	SetArray(arrC, size);
 
-	for (int i = 0; i < row; i++)
-	{
-		for (int j = 0; j < col; j++)
-		{
-			arr[i][j] = rand() % 10 + 1;
-			std::cout << arr[i][j] << " ";
-		}
-		std::cout << "\n";
-	}
-
-	
+	PrintArray(arrI, size);
+	PrintArray(arrD, size);
+	PrintArray(arrC, size);*/
 
 	return 0;
 }
- 
+
+
+
+
+void SetArray(int arr[], int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		arr[i] = rand() % 9 + 1;
+	}
+}
+
+void SetArray(double arr[], int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		arr[i] = (rand() % 20 + 1) + (double)(rand() % 9 + 1) / 10;
+	}
+}
+
+void SetArray(char arr[], int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		arr[i] = rand() % 26 + 97;
+	}
+}
+
+void PrintArray(int arr[], int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << arr[i] << " ";
+	}
+	std::cout << "\n";
+}
+
+void PrintArray(double arr[], int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << arr[i] << " ";
+	}
+	std::cout << "\n";
+}
+
+void PrintArray(char arr[], int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << arr[i] << " ";
+	}
+	std::cout << "\n";
+}
+
+
+
 
 /*
 	Типы данных
@@ -375,4 +486,113 @@ const int size = 15;
 	std::cout << "\n\n";
 
 */
+
+/*	const int row = 3, col = 4;
+
+int arr[row][col];  // заполнить этот массив рандомными числами через циклы
+
+for (int i = 0; i < row; i++)
+{
+	for (int j = 0; j < col; j++)
+	{
+		arr[i][j] = rand() % 10 + 1;
+		std::cout << arr[i][j] << " ";
+	}
+	std::cout << "\n";
+}*/
+
+/*const int size = 10;
+int arr1[size]{}, temp[size];
+int count = 0;
+
+for (int i = 0; i < size; i++)
+{
+	arr1[i] = rand() % 6;
+	std::cout << arr1[i] << " ";
+}
+
+std::cout << "\n\n";
+
+for (int i = 0; i < size; i++)
+{
+	if (arr1[i] != 0)
+	{
+		arr1[count] = arr1[i];
+		count++;
+	}
+
+}
+std::cout << "\n\n";
+for (int i = count; i < size; i++)
+{
+	arr1[i] = -1;
+}
+for (int i = 0; i < size; i++)
+{
+	std::cout << arr1[i] << " ";
+}
+
+std::cout << "\n\n\n";*/
+
+/*const int row = 3;
+const int col = 4;
+
+int arr[row][col];
+int sumRow = 0, sumCol = 0, totalSum = 0;;
+
+for (int i = 0; i < row; i++)
+{
+	sumRow = 0;
+	for (int j = 0; j < col; j++)
+	{
+		arr[i][j] = rand() % 10;
+		sumRow += arr[i][j];
+		std::cout << arr[i][j] << "\t";
+	}
+	std::cout << "|\t" << sumRow << "\n";
+}
+
+std::cout << "--------------------------------------------------\n";
+
+for (int i = 0; i < col; i++)
+{
+	sumCol = 0;
+	for (int j = 0; j < row; j++)
+	{
+		sumCol += arr[j][i];
+	}
+	std::cout << sumCol << "\t";
+	totalSum += sumCol;
+}
+std::cout << "|\t" << totalSum << "\n\n";*/
+
+/*for (int i = 0; i < size; i++)
+{
+	arr1[i] = rand() % 6;
+	if (arr1[i] == 0)
+	{
+		arr1[i] = -1;
+	}
+	std::cout << arr1[i] << " ";
+}
+
+std::cout << "\n\n";
+
+for (int i = 0, j = 0; i < size; i++, j++)
+{
+	if (arr1[i] == -1)
+	{
+		i++; count++;
+	}
+	temp[j] = arr1[i];
+}
+for (int i = size - 1, j = 0; j < count; i--, j++)
+{
+	temp[i] = -1;
+}
+for (int i = 0; i < size; i++)
+{
+	arr1[i] = temp[i];
+	std::cout << arr1[i] << ' ';
+}*/
 
